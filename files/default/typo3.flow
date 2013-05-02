@@ -1,0 +1,67 @@
+server {
+	listen 80;
+	server_name typo3.flow.vagrant;
+	root /var/www/typo3.flow/Web/;
+
+	index index.php;
+
+	# Some basic cache-control for static files to be sent to the browser
+	location ~* \.(?:ico|css|js|gif|jpeg|jpg|png)$ {
+		expires         max;
+		add_header      Pragma public;
+		add_header      Cache-Control "public, must-revalidate, proxy-revalidate";
+	}
+	## Disable .htaccess and other hidden files
+	location ~ /\. {
+		deny all;
+		access_log off;
+		log_not_found off;
+	}
+
+	location = /favicon.ico {
+		log_not_found off;
+		access_log off;
+	}
+
+	location = /robots.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	location = /humans.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	location /_Resources/ {
+		access_log off;
+		log_not_found off;
+		expires max;
+		break;
+	}
+
+	###
+	# stop rewriting by existing files | is instead of -> location / { rewrite ".*" /index.php last; }
+	# use this if you want to run other PHP-Applications in TYPO3-Flow/Web directory
+	###
+	try_files $uri $uri/ /index.php?$args;
+	location ~ \.php$ {
+		include fastcgi_params;
+		# fastcgi_pass   unix:/var/run/php-fpm-www.sock;
+		fastcgi_pass upstream_php_fpm;
+		fastcgi_index index.php;
+		fastcgi_param FLOW_CONTEXT Production;
+		fastcgi_param FLOW_REWRITEURLS 1;
+		fastcgi_split_path_info ^(.+\.php)(.*)$;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param PATH_INFO $fastcgi_path_info;
+
+		fastcgi_buffer_size          128k;
+		fastcgi_buffers              256 16k;
+		fastcgi_busy_buffers_size    256k;
+		fastcgi_temp_file_write_size 256k;
+		fastcgi_read_timeout         240; ### set this value for your server
+	}
+}
