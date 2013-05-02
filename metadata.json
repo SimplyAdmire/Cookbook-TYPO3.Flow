@@ -1,9 +1,38 @@
 {
-	"name": "typo3-flow",
-	"description": "",
-	"long_description": "",
-	"maintainer": "ReFactory IT",
-	"maintainer_email": "info@refactory.it",
-	"license": "Apache 2.0",
-	"version": "0.0.1"
+  "name": "typo3-flow",
+  "description": "",
+  "long_description": "",
+  "maintainer": "ReFactory IT",
+  "maintainer_email": "info@refactory.it",
+  "license": "Apache 2.0",
+  "version": "0.0.1"
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "amazon": ">= 0.0.0"
+  },
+  "dependencies": {
+    "apt": ">= 0.0.0",
+    "yum": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.4.1"
 }
