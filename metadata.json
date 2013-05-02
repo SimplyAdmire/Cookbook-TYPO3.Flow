@@ -5,7 +5,7 @@
   "maintainer": "ReFactory IT",
   "maintainer_email": "info@refactory.it",
   "license": "Apache 2.0",
-  "version": "0.0.1"
+  "version": "0.0.1",
   "platforms": {
     "debian": ">= 0.0.0",
     "ubuntu": ">= 0.0.0",
