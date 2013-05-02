@@ -1,0 +1,9 @@
+{
+	"name": "typo3-flow",
+	"description": "",
+	"long_description": "",
+	"maintainer": "ReFactory IT",
+	"maintainer_email": "info@refactory.it",
+	"license": "Apache 2.0",
+	"version": "0.0.1"
+}
